@@ -1,2 +1,563 @@
+/*
+	Main CSS
+	* this file will be compiled with webpack to ./dist
+
+	List Of Contents
+	- Bootstrap
+	- Reset
+	- Typography
+	- Sections
+	- Animation
+	- Responsive
+*/
+
+/* Load Bootstrap */
 @import "../../node_modules/bootstrap/dist/css/bootstrap-reboot.css";
 @import "../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css";
+
+/*
+----------------------------------------
+- Reset
+----------------------------------------
+*/
+:root {
+	--root-font-size: 18px;
+	--main-color: #222831;
+	--secondary-main-color: #15191f;
+	--accent-color: #f6c90e;
+	--typography-color: #eeeeee;
+	--meta-color: rgb(228, 228, 228);
+	--primary-font: "Roboto", sans-serif;
+	--secondary-font: "Poppins";
+	--duration: 500ms;
+	--duration-two: 900ms;
+}
+h1 {
+	font-size: 4em;
+	line-height: 1.2em;
+	font-family: var(--primary-font);
+	font-weight: 600;
+}
+
+h2 {
+	font-size: 3em;
+	line-height: 1.3em;
+}
+h3 {
+	font-size: 2.5em;
+	line-height: 1.2em;
+}
+h4 {
+	font-size: 2em;
+	line-height: 1.1em;
+}
+ul,
+ol {
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+ul li {
+	display: inline-block;
+	margin-right: 20px;
+}
+a {
+	color: inherit;
+}
+img {
+	max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+.margin {
+	float: left;
+	width: 100%;
+	clear: both;
+	display: block;
+	height: 50px;
+}
+
+/*
+----------------------------------------
+- Typography
+----------------------------------------
+*/
+html {
+	font-size: var(--root-font-size);
+}
+body {
+	background-color: var(--main-color);
+	font-family: var(--primary-font);
+	font-size: 1em;
+	line-height: 1.8em;
+	color: var(--typography-color);
+}
+.meta-text,
+.section-intro--subtitle {
+	font-family: var(--secondary-font);
+	font-size: 0.8em;
+	text-transform: uppercase;
+	color: var(--meta-color);
+}
+svg {
+	width: 20px;
+	height: 20px;
+	fill: var(--accent-color);
+}
+.button {
+	padding: 20px 30px;
+	color: var(--accent-color);
+	line-height: 1em;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	font-family: var(--primary-font);
+	border: 2px solid var(--accent-color);
+	transition: all var(--duration);
+	text-transform: uppercase;
+	font-weight: 900;
+	font-size: 0.9em;
+	letter-spacing: 1px;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: var(--accent-color);
+	color: var(--main-color);
+	text-decoration: none;
+}
+
+.button.button-goto {
+	margin-top: 40px;
+	float: left;
+	clear: both;
+}
+.button--with-icon svg {
+	margin-right: 10px;
+	margin-top: -2px;
+	height: 1em;
+}
+.button--with-icon {
+	line-height: 1em;
+}
+.button--with-icon:hover span,
+.button--with-icon:hover svg {
+	color: var(--main-color);
+	fill: var(--main-color);
+}
+.button--small {
+	padding: 10px 10px 10px 25px;
+}
+b {
+	font-weight: 900;
+	color: var(--accent-color);
+}
+
+br {
+	display: block;
+	content: " ";
+	width: 100%;
+	height: 15px;
+}
+
+/*
+----------------------------------------
+- Sections
+----------------------------------------
+*/
+section,
+header .row {
+	padding: 100px 0px;
+}
+header {
+	position: relative;
+}
+header:after {
+	content: " ";
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	right: 0;
+	background: rgb(0, 0, 0);
+	background: linear-gradient(
+		90deg,
+		rgba(0, 0, 0, 0.6) 10%,
+		rgba(0,0,0,0) 40%,
+		rgba(255, 255, 255, 0) 100%
+	);
+}
+.container,
+.container-fluid {
+	position: relative;
+	overflow: hidden;
+}
+.container-fluid .header--background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 0;
+}
+.container .row,
+.container-fluid .row {
+	position: relative;
+	z-index: 2;
+}
+
+/* Navigation */
+nav.menu {
+	margin-bottom: 60px;
+	font-size: 0.9em;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	font-family: var(--secondary-font);
+}
+nav.menu ul li a {
+	color: var(--meta-color);
+	transition: all var(--duration);
+	text-decoration: none;
+	position: relative;
+	overflow: hidden;
+	display: block;
+}
+nav.menu ul li a:before {
+	width: 0;
+	height: 4px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: -99;
+	content: " ";
+	background-color: var(--accent-color);
+	transition: all var(--duration);
+}
+nav.menu ul li a:hover {
+	color: var(--accent-color);
+}
+nav.menu ul li a:hover:before {
+	width: 100%;
+}
+
+/* Intro */
+.section-intro {
+	margin: 100px 0px;
+	position: relative;
+}
+
+.section-intro--subtitle {
+	position: relative;
+	padding: 0px 0px 0px 20px;
+	font-weight: 900;
+	font-family: var(--primary-font);
+}
+.section-intro--subtitle:before {
+	position: absolute;
+	z-index: -1;
+	left: 0%;
+	width: 10px;
+	height: 10px;
+	background-color: var(--accent-color);
+	bottom: 4px;
+	content: " ";
+	transition: all var(--duration-two);
+}
+.section-intro--title {
+	font-size: 5em;
+	letter-spacing: 2px;
+}
+
+.section-intro--paragraph {
+	width: 60%;
+}
+
+.section-title {
+	margin-bottom: 40px;
+	line-height: 1em;
+	position: relative;
+}
+.section-title:before {
+	content: " ";
+	width: 0px;
+	height: 10px;
+	background-color: var(--accent-color);
+	position: absolute;
+	bottom: 0.1em;
+	left: 0;
+	z-index: -1;
+	transition: all var(--duration);
+}
+.animated-in:before {
+	width: 60px;
+}
+.section-title-centered:before {
+	right: auto !important;
+	left: auto !important;
+}
+
+.list-with-icons {
+	margin: 0px;
+	padding: 0px;
+}
+
+.list-with-icons li {
+	display: flex;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	margin-bottom: 10px;
+}
+.list-with-icons li .icon {
+	padding-top: 5px;
+	margin-right: 10px;
+}
+
+.button--secondary {
+	margin-left: 20px;
+}
+
+/* Skills */
+#projects {
+	background-color: var(--secondary-main-color);
+}
+.project-item-title,
+.col-title {
+	margin-bottom: 10px;
+	position: relative;
+	padding-left: 20px;
+}
+.col-title:before {
+	content: " ";
+	width: 10px;
+	height: 10px;
+	background-color: var(--accent-color);
+	position: absolute;
+	bottom: 0.4em;
+	left: 0;
+	z-index: -1;
+}
+
+.overlay-container {
+	position: relative;
+	background-color: var(--secondary-main-color);
+	overflow: hidden;
+	margin-bottom: 60px;
+}
+
+.overlay-container .overlay-container--image {
+	position: relative;
+	z-index: 0;
+}
+.overlay-container--image:after {
+	content: " ";
+	opacity: 0;
+	width: 0%;
+	height: 0%;
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	bottom: 50%;
+	top: 50%;
+	border-radius: 400px;;
+	background: var(--accent-color);
+	transition: all var(--duration);
+}
+.overlay-container .overlay-container--content {
+	position: absolute;
+	bottom: -30%;
+	padding: 30px;
+	left: 0;
+	opacity: 0;
+	width: 100%;
+	transition: all var(--duration-two);
+}
+.overlay-container--image {
+	max-height: 400px;
+}
+.overlay-container--image img {
+	position: relative;
+	top: 0px;
+}
+
+.overlay-container:hover .overlay-container--content {
+	bottom: 0;
+	opacity: 1;
+}
+.overlay-container:hover .overlay-container--image:after {
+	opacity: 0.9;
+	width: 800px;
+	left: -150px;
+	top: -150px;
+	height: 800px;
+}
+
+.work-experience .work {
+	position: relative;
+	display: flex;
+	align-items: bottom;
+	gap: 40px;
+	flex-wrap: nowrap;
+}
+.work .date {
+	color: var(--accent-color);
+	font-size: 0.8em;
+	border-right: 1px solid var(--accent-color);
+	padding-right: 40px;
+	width: 120px;
+	min-width: 120px;
+	padding-top: 10%;
+	position: relative;
+}
+.work .date:after {
+	position: absolute;
+	content: " ";
+	width: 10px;
+	height: 10px;
+	right: -5px;
+	top: 40%;
+	border-radius: 50px;
+	background-color: var(--accent-color);
+}
+
+.work:not(:last-child) .content {
+	padding-bottom: 40px;
+}
+
+.work .company {
+	font-size: 0.8em;
+	text-transform: capitalize;
+	position: relative;
+	padding-left: 20px;
+}
+.work .company:before {
+	content: " ";
+	width: 10px;
+	height: 10px;
+	background-color: var(--accent-color);
+	left: 0;
+	top: 10px;
+	position: absolute;
+}
+.company span {
+	text-transform: capitalize;
+	color: var(--typography-color);
+}
+.work .role p {
+	margin-top: 20px;
+}
+.skills-container {
+	margin-top: 100px;
+}
+.skill {
+	text-align: center;
+	margin-bottom: 40px;
+}
+.skill .skill-content {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 0.9em;
+	text-align: wrap;
+}
+.skill .animated-bar {
+	position: relative;
+	text-align: center;
+}
+.skill span {
+	font-size: 0.9em;
+	position: absolute;
+	top: 35%;
+	left: 0;
+	right: 0;
+	margin-left: 3px;
+}
+
+.progress {
+	height: 300px;
+}
+
+.progress > svg {
+	height: 100%;
+	display: block;
+}
+.animated-bar svg {
+	width: 130px;
+	height: 130px;
+}
+
+#contact {
+	background: var(--secondary-main-color);
+	position: relative;
+	overflow: hidden;
+}
+#contact > img {
+	opacity: 0.8;
+	position: absolute;
+}
+#contact > .container {
+	padding: 60px 0px;
+}
+
+.contact-container {
+	background-color: var(--main-color);
+	padding: 100px 0px;
+	text-align: center;
+}
+.contact-row {
+	margin-bottom: 20px;
+}
+.contact-row svg {
+	width: 30px;
+	height: 30px;
+	margin-top: -0.5em;
+	margin-right: 20px;
+}
+.contact-row .contact-info {
+	font-size: 1.3em;
+}
+
+/*
+----------------------------------------
+- Animation
+----------------------------------------
+*/
+.animated-hidden {
+	opacity: 0;
+	top: 100px;
+	transition: all var(--duration-two);
+}
+.animated-visible {
+	opacity: 1;
+	top: 0;
+}
+.animated-hidden-left {
+	opacity: 0;
+	left: -50px;
+	transition: all var(--duration-two);
+}
+
+.animated-visible-left {
+	opacity: 1;
+	left: 0px;
+}
+
+
+/*
+----------------------------------------
+- Responsive
+----------------------------------------
+*/
+/* @TODO
+	- margin top on technologies section
+	- margin bottom on project item
+	- header image size
+	- contact image size
+	- date dot position
+	- square before contact subtitle
+	- button overlap
+*/
