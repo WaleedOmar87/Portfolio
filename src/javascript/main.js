@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
 			svg.animate(percentage / 100);
 		});
 	};
-	RenderProgressBar();
 
 	const Animate = (selector, cssClass) => {
 		const nodes = document.querySelectorAll(selector);
@@ -29,9 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			let watcher = scrollMonitor.create(elm);
 			watcher.enterViewport(() => {
 				elm.classList.add(cssClass, -300);
-			});
-			watcher.exitViewport(() => {
-				elm.classList.remove(cssClass, -300);
+				if (
+					elm.classList.contains("skills") &&
+					!elm.classList.contains("rendered")
+				) {
+					RenderProgressBar();
+					elm.classList.add("rendered");
+				}
 			});
 		});
 	};
