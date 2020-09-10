@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		duration: 4000,
 	};
 
-	const RenderProgressBar = () => {
+	const renderProgressBar = () => {
 		// Init progressBar when dom is loaded
 		const ProgressSections = document.querySelectorAll(".animated-bar");
 		ProgressSections.forEach((elm) => {
@@ -22,7 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	};
 
-	const Animate = (selector, cssClass) => {
+	const clickToScroll = () => {
+		const menuItems = document.querySelectorAll("nav.menu ul li a , .goto");
+		menuItems.forEach((elm) => {
+			elm.addEventListener("click", (event) => {
+				event.preventDefault();
+				let container = elm.getAttribute('href');
+				document.querySelector(container).scrollIntoView({
+					behavior: "smooth"
+				});
+			});
+		});
+	};
+
+	const animateSections = (selector, cssClass) => {
 		const nodes = document.querySelectorAll(selector);
 		nodes.forEach((elm) => {
 			let watcher = scrollMonitor.create(elm);
@@ -32,13 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
 					elm.classList.contains("skills") &&
 					!elm.classList.contains("rendered")
 				) {
-					RenderProgressBar();
+					renderProgressBar();
 					elm.classList.add("rendered");
 				}
 			});
 		});
 	};
-	Animate("[data-animated-headers]", "animated-in");
-	Animate(".animated-hidden", "animated-visible");
-	Animate(".animated-hidden-left", "animated-visible-left");
+	animateSections("[data-animated-headers]", "animated-in");
+	animateSections(".animated-hidden", "animated-visible");
+	animateSections(".animated-hidden-left", "animated-visible-left");
+	clickToScroll()
 });

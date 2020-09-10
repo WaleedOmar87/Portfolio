@@ -189,8 +189,7 @@ header:after {
 	background: rgb(0, 0, 0);
 	background: linear-gradient(
 		90deg,
-		rgba(0, 0, 0, 0.6) 10%,
-		rgba(0,0,0,0) 40%,
+		rgba(0, 0, 0, 0.7) 30%,
 		rgba(255, 255, 255, 0) 100%
 	);
 }
@@ -420,7 +419,8 @@ nav.menu ul li a:hover:before {
 	width: 10px;
 	height: 10px;
 	right: -5px;
-	top: 40%;
+	margin-top: 10px;
+	top: auto;
 	border-radius: 50px;
 	background-color: var(--accent-color);
 }
@@ -491,6 +491,7 @@ nav.menu ul li a:hover:before {
 }
 
 #contact {
+	/* overlay color */
 	background: var(--secondary-main-color);
 	position: relative;
 	overflow: hidden;
@@ -499,14 +500,11 @@ nav.menu ul li a:hover:before {
 	opacity: 0.8;
 	position: absolute;
 }
-#contact > .container {
-	padding: 60px 0px;
-}
 
 .contact-container {
 	background-color: var(--main-color);
-	padding: 100px 0px;
-	text-align: center;
+	padding: 100px 100px;
+	text-align: left;
 }
 .contact-row {
 	margin-bottom: 20px;
@@ -561,3 +559,49 @@ nav.menu ul li a:hover:before {
 	- square before contact subtitle
 	- button overlap
 */
+
+@media only screen and (max-width: 1024px) {
+	header .header--background ,
+	#contact .contact-background {
+		max-width: none;
+		max-height: 100%;
+	}
+	#about .col-12:not(:last-child)  {
+		margin-bottom: 100px;
+	}
+	#about .button {
+		float: left;
+		clear: both;
+		width: 80%;
+	}
+	#about .button:not(:first-of-type) {
+		margin: 20px 0px 0px 0px;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.project-item {
+		padding-bottom: 20px;
+	}
+	.project-item:not(:last-child) {
+		margin-bottom: 80px;
+	}
+	#about .button {
+		width: auto;
+		float: none;
+		clear: none;
+	}
+	#about .button:not(:first-of-type) {
+		margin-left: 20px;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	#about .button {
+		float: left;
+		clear: both;
+		width: 80%;
+	}
+	#about .button:not(:first-of-type) {
+		margin: 20px 0px 0px 0px;
+	}
+}
